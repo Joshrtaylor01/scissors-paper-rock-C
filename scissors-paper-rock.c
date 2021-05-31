@@ -5,6 +5,12 @@
 #include <string.h>
 
 
+#define RED "\x1b[91m"
+#define GREEN "\x1b[92m"
+#define YELLOW "\x1b[93m"
+#define RESET "\x1b[0m"
+
+
 char choices[3][8] = {"rock", "paper", "scissors"};
 
 char* computer_choice(void) {
@@ -38,35 +44,35 @@ int determine_winner(char *p_choice, char *c_choice) {
 	char computer = c_choice[0];
 
 	if (player == computer) {
-		printf("You both picked %s, it's a tie!\n", p_choice);
+		printf(YELLOW "You both picked %s, it's a tie!\n", p_choice);
 		return 0;
 	}
 	
 	switch (player) {
 		case 'r':
 			if (computer == 's') {	
-				printf("You won! Rock smashes scissors!\n");
+				printf(GREEN "You won! Rock smashes scissors!\n");
 				return 1;
 			} else {
-				printf("You lost! Paper covers rock!\n");
+				printf(RED "You lost! Paper covers rock!\n");
 				return -1;
 			}
 	
 		case 's':
 			if (computer == 'p') {	
-				printf("You won! Scissors cuts paper!\n");
+				printf(GREEN "You won! Scissors cuts paper!\n");
 				return 1;
 			} else {
-				printf("You lost! Rock smashes scissors!\n");
+				printf(RED "You lost! Rock smashes scissors!\n");
 				return -1;
 			}
 		
 		case 'p':
 				if (computer == 'r') {	
-					printf("You won! Paper covers rock!\n");
+					printf(GREEN "You won! Paper covers rock!\n");
 					return 1;
 				} else {
-					printf("You lost! Scissors cuts paper!\n");
+					printf(RED "You lost! Scissors cuts paper!\n");
 					return -1;	
 				}
 	}
@@ -81,13 +87,15 @@ void main(void) {
 			allowed = 1;
 			win = 0;
 			p_choice[0] = 0;
-			printf("Enter your selection\n[Scissors, Paper, Rock]\n > ");
+			fflush(stdin);
+			printf("Enter your selection\n");
 
 			while (allowed == 1) {
+				printf("[Scissors, Paper, Rock]\n > ");
 				scanf(" %s", &p_choice);
 				allowed = check_input(p_choice);	
 				if (allowed == 1) {
-					printf("\nNot a valid choice, make another selection\n > ");
+					printf("\nNot a valid choice, make another selection\n");
 				}
 			}
 			
@@ -96,7 +104,7 @@ void main(void) {
 			printf("\nYou chose %s, the computer chose %s\n", p_choice, c_choice);
 			win = determine_winner(p_choice, c_choice);
 
-			printf("\nWould you like to play again? [Y/n]\n > ");
+			printf(RESET "\nWould you like to play again? [Y/n]\n > ");
 			getchar();
 			play_again = getchar();
 			printf("\n");					
