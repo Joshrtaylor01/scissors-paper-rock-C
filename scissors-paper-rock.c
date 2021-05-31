@@ -31,11 +31,11 @@ int check_input(char *choice) {
 	for (int i = 0; i<3; i++) {
 		int result = strcmp(choices[i], choice);	
 		if (result == 0) {
-			return 0; 
+			return 1; 
 		} 
 	}
 	
-	return 1;
+	return 0;
 }
 
 
@@ -75,22 +75,22 @@ void determine_winner(char *p_choice, char *c_choice) {
 	}
 }
 
-void main(void) {
+int main(void) {
 	char p_choice[8], *c_choice;
 	int allowed;
 	char play_again;
 	printf("This is a simple Scissors Paper Rock game, made in C!\n");
 	do {
-			allowed = 1;
+			allowed = 0;
 			p_choice[0] = 0;
 			fflush(stdin);
 			printf("Enter your selection\n");
 
-			while (allowed == 1) {
+			while (!(allowed)) {
 				printf("[Scissors, Paper, Rock]\n > ");
-				scanf(" %s", &p_choice);
+				scanf(" %s", p_choice);
 				allowed = check_input(p_choice);	
-				if (allowed == 1) {
+				if (!(allowed)) {
 					printf("\nNot a valid choice, make another selection\n");
 				}
 			}
