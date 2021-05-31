@@ -39,53 +39,49 @@ int check_input(char *choice) {
 }
 
 
-int determine_winner(char *p_choice, char *c_choice) {
+void determine_winner(char *p_choice, char *c_choice) {
     char player = p_choice[0];
 	char computer = c_choice[0];
 
 	if (player == computer) {
 		printf(YELLOW "You both picked %s, it's a tie!\n", p_choice);
-		return 0;
+		return;
 	}
 	
 	switch (player) {
 		case 'r':
 			if (computer == 's') {	
 				printf(GREEN "You won! Rock smashes scissors!\n");
-				return 1;
 			} else {
 				printf(RED "You lost! Paper covers rock!\n");
-				return -1;
 			}
-	
+			break;	
+
 		case 's':
 			if (computer == 'p') {	
 				printf(GREEN "You won! Scissors cuts paper!\n");
-				return 1;
 			} else {
 				printf(RED "You lost! Rock smashes scissors!\n");
-				return -1;
 			}
-		
+			break;
+	
 		case 'p':
-				if (computer == 'r') {	
-					printf(GREEN "You won! Paper covers rock!\n");
-					return 1;
-				} else {
-					printf(RED "You lost! Scissors cuts paper!\n");
-					return -1;	
-				}
+			if (computer == 'r') {	
+				printf(GREEN "You won! Paper covers rock!\n");
+			} else {
+				printf(RED "You lost! Scissors cuts paper!\n");
+			}
+			break;
 	}
 }
 
 void main(void) {
 	char p_choice[8], *c_choice;
-	int allowed, win;
+	int allowed;
 	char play_again;
 	printf("This is a simple Scissors Paper Rock game, made in C!\n");
 	do {
 			allowed = 1;
-			win = 0;
 			p_choice[0] = 0;
 			fflush(stdin);
 			printf("Enter your selection\n");
@@ -102,7 +98,8 @@ void main(void) {
 			c_choice = computer_choice();				
 				
 			printf("\nYou chose %s, the computer chose %s\n", p_choice, c_choice);
-			win = determine_winner(p_choice, c_choice);
+			
+			determine_winner(p_choice, c_choice);
 
 			printf(RESET "\nWould you like to play again? [Y/n]\n > ");
 			getchar();
