@@ -81,7 +81,7 @@ void main(void) {
 			allowed = 1;
 			win = 0;
 			p_choice[0] = 0;
-			printf("Enter your selection [S, P, R]\n > ");
+			printf("Enter your selection\n[Scissors, Paper, Rock]\n > ");
 
 			while (allowed == 1) {
 				scanf(" %s", &p_choice);
