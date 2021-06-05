@@ -4,13 +4,6 @@
 #include <ctype.h>
 #include <string.h>
 
-
-#define RED "\x1b[91m"
-#define GREEN "\x1b[92m"
-#define YELLOW "\x1b[93m"
-#define RESET "\x1b[0m"
-
-
 char choices[3][8] = {"rock", "paper", "scissors"};
 
 char* computer_choice(void) {
@@ -51,25 +44,25 @@ void determine_winner(char *p_choice, char *c_choice) {
 	switch (player) {
 		case 'r':
 			if (computer == 's') {	
-				printf(GREEN "You won! Rock smashes scissors!\n");
+				printf("You won! Rock smashes scissors!\n");
 			} else {
-				printf(RED "You lost! Paper covers rock!\n");
+				printf("You lost! Paper covers rock!\n");
 			}
 			break;	
 
 		case 's':
 			if (computer == 'p') {	
-				printf(GREEN "You won! Scissors cuts paper!\n");
+				printf("You won! Scissors cuts paper!\n");
 			} else {
-				printf(RED "You lost! Rock smashes scissors!\n");
+				printf("You lost! Rock smashes scissors!\n");
 			}
 			break;
 	
 		case 'p':
 			if (computer == 'r') {	
-				printf(GREEN "You won! Paper covers rock!\n");
+				printf("You won! Paper covers rock!\n");
 			} else {
-				printf(RED "You lost! Scissors cuts paper!\n");
+				printf("You lost! Scissors cuts paper!\n");
 			}
 			break;
 	}
