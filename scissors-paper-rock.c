@@ -37,7 +37,7 @@ void determine_winner(char *p_choice, char *c_choice) {
 	char computer = c_choice[0];
 
 	if (player == computer) {
-		printf(YELLOW "You both picked %s, it's a tie!\n", p_choice);
+		printf("You both picked %s, it's a tie!\n", p_choice);
 		return;
 	}
 	
@@ -94,7 +94,7 @@ int main(void) {
 			
 			determine_winner(p_choice, c_choice);
 
-			printf(RESET "\nWould you like to play again? [Y/n]\n > ");
+			printf("\nWould you like to play again? [Y/n]\n > ");
 			getchar();
 			play_again = getchar();
 			printf("\n");					
